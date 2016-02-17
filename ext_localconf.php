@@ -5,7 +5,7 @@ if (!defined ("TYPO3_MODE")) {
 /* ##############################
    ### General initialisation ###
    ############################## */
-$TYPO3_CONF_VARS['FE']['eID_include']['tx_nawsecuredl'] = 'EXT:naw_securedl/Resources/Private/Scripts/FileDeliveryEidDispatcher.php';
+$TYPO3_CONF_VARS['FE']['eID_include']['tx_nawsecuredl'] = 'EXT:nawsecuredl/Resources/Private/Scripts/FileDeliveryEidDispatcher.php';
 
 /* #######################################
    ### Version specific initialisation ###
@@ -26,7 +26,7 @@ if (substr(TYPO3_branch, 0, 1) === '4') {
 	// Keep the old behaviour! For new features use a new TYPO3 Version!
 	$objectManager->registerImplementation('Bitmotion\\NawSecuredl\\Resource\\Publishing\\ResourcePublishingTarget', 'Bitmotion\\NawSecuredl\\Resource\\Publishing\\PhpDeliveryProtectedResourcePublishingTarget');
 	$TYPO3_CONF_VARS['FE']['eID_include']['tx_nawsecuredl'] = 'EXT:naw_securedl/Resources/Private/Scripts/FileDeliveryEidDispatcher.php';
-	$TYPO3_CONF_VARS['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-output'][] = ':&Tx_NawSecuredl_Service_SecureDownloadService->parseFE';
+	$TYPO3_CONF_VARS['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-output'][] = 'Bitmotion\\NawSecuredl\\Service\\SecureDownloadService->parseFE';
 
 } else {
 	// TYPO3 > 6.0
@@ -61,7 +61,7 @@ if (substr(TYPO3_branch, 0, 1) === '4') {
 			$TYPO3_CONF_VARS['SC_OPTIONS']['tslib/class.tslib_fe.php']['checkDataSubmission']['naw_securedl_set_access_token_cookie'] = 'Bitmotion\NawSecuredl\Security\Authorization\Resource\\AccessTokenCookiePublisher';
 		}
 	} else {
-		$TYPO3_CONF_VARS['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-output'][] = ':&Tx_NawSecuredl_Service_SecureDownloadService->parseFE';
+		$TYPO3_CONF_VARS['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-output'][] = 'Bitmotion\\NawSecuredl\\Service\\SecureDownloadService->parseFE';
 	}
 	$objectManager->registerImplementation('Bitmotion\\NawSecuredl\\Resource\\Publishing\\ResourcePublishingTarget', $publishingTarget);
 }

@@ -5,5 +5,5 @@ if (defined('TYPO3_MODE') && $GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['
 }
 
 /** @var $fileDelivery \Bitmotion\NawSecuredl\Resource\FileDelivery */
-$fileDelivery = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('tx_nawsecuredl_output');
+$fileDelivery = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Bitmotion\\NawSecuredl\\Resource\\FileDelivery');
 $fileDelivery->deliver();
