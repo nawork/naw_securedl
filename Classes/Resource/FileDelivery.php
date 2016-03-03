@@ -290,8 +290,10 @@ class FileDelivery {
 			if (is_array($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/naw_securedl/class.tx_nawsecuredl_output.php']['output'])) {
 				$_params = array(
 					'pObj' => &$this,
+					'fileName' => $fileName,
 					'fileExtension' => '.' . $strFileExtension, // Add leading dot for compatibility in this hook
 					'mimeType' => &$strMimeType,
+					'feUser' => $this->feUserObj->user
 				);
 				foreach($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/naw_securedl/class.tx_nawsecuredl_output.php']['output'] as $_funcRef)   {
 					GeneralUtility::callUserFunction($_funcRef, $_params, $this);
